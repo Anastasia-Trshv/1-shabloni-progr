@@ -118,8 +118,12 @@ namespace lr1
 
         private void UpdateUnloadListBox()
         {
-            UnloadPlaginListBox.ItemsSource = null;
-            UnloadPlaginListBox.ItemsSource = UnloadedPlugins;
+            Dispatcher.Invoke(() =>
+            {
+                UnloadPlaginListBox.ItemsSource = null;
+                UnloadPlaginListBox.ItemsSource = UnloadedPlugins;
+            }
+            );
         }
         private void UpdateLoadedListBox()
         {
