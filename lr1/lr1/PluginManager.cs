@@ -13,10 +13,10 @@ namespace lr1
 
     class PluginManager
     {
-        string[] PluginsPaths=new string[0];
+        string[] PluginsPaths= Array.Empty<string>();
         string directoryPath = @"C:\Users\mtspr\Desktop\Учеба\4 семестр\Шаблоны проектирования\1 лр\lr1\Pluginsdll";
         List<Assembly> assemblies = new List<Assembly>();
-        Dictionary<string, Type> PluginCreatorPairs = new Dictionary<string, Type>();
+        public Dictionary<string, Type> PluginCreatorPairs = new Dictionary<string, Type>();
 
 
 
@@ -40,6 +40,7 @@ namespace lr1
             //List<string> pluginNames = new List<string>();
             string a="";
             Type b=null;
+            Dictionary<string,Type> temp = new Dictionary<string,Type>();
 
             foreach (Assembly assembly in this.assemblies)
             {
@@ -51,7 +52,7 @@ namespace lr1
                     if (typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
                     {
                        // pluginNames.Add(type.Name);
-                        a = type.Name;
+                        a = type.FullName;
                     }
                     else
                     {
@@ -61,8 +62,9 @@ namespace lr1
                 }
                
                PluginCreatorPairs.Add(a,b);
+                temp.Add(a,b);
             }
-            return PluginCreatorPairs;
+            return temp;
         }
 
             public PluginManager()
