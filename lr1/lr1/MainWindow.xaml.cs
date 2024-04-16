@@ -15,16 +15,17 @@ namespace lr1
     
     public partial class MainWindow : Window
     {
-        public List<string> UnloadedPlugins { get; set; }
+        public Dictionary<string,Type> UnloadedPlugins { get; set; }
         public List<string> LoadedPlugins { get; set; }
         public List<string> WorkingPlugins { get; set; }
         public MainWindow()
         {
-            UnloadedPlugins=new List<string>();
+            UnloadedPlugins = new Dictionary<string, Type>();
 
             PluginManager pluginManager = new PluginManager();
             UnloadedPlugins= pluginManager.GetPluginNames();
             DataContext = this;
+
             InitializeComponent();
         }
 

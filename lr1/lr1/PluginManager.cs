@@ -16,6 +16,7 @@ namespace lr1
         string[] PluginsPaths=new string[0];
         string directoryPath = @"C:\Users\mtspr\Desktop\Учеба\4 семестр\Шаблоны проектирования\1 лр\lr1\Pluginsdll";
         List<Assembly> assemblies = new List<Assembly>();
+        Dictionary<string, Type> PluginCreatorPairs = new Dictionary<string, Type>();
 
 
 
@@ -34,9 +35,11 @@ namespace lr1
             return projectFiles;
         }
 
-        public List<string> GetPluginNames()
+        public Dictionary<string, Type> GetPluginNames()
         {
-            List<string> pluginNames = new List<string>();
+            //List<string> pluginNames = new List<string>();
+            string a="";
+            Type b=null;
 
             foreach (Assembly assembly in this.assemblies)
             {
@@ -47,12 +50,19 @@ namespace lr1
                 {
                     if (typeof(IPlugin).IsAssignableFrom(type) && !type.IsInterface)
                     {
-                        pluginNames.Add(type.Name);
+                       // pluginNames.Add(type.Name);
+                        a = type.Name;
+                    }
+                    else
+                    {
+                        b = type;
                     }
                         
                 }
+               
+               PluginCreatorPairs.Add(a,b);
             }
-            return pluginNames;
+            return PluginCreatorPairs;
         }
 
             public PluginManager()

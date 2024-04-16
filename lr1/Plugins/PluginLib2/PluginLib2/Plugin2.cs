@@ -14,5 +14,10 @@ namespace PluginLib2
         {
             return "Plugin2 stoped";
         }
+        public override string ToString()
+        {
+
+            return $"Plugin2";
+        }
     }
 }

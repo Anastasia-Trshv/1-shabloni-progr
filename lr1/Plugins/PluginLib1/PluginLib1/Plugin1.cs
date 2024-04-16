@@ -1,5 +1,6 @@
 ﻿
 using PlugLibInterfaces;
+using System.Xml.Linq;
 
 namespace PluginLib1
 {
@@ -16,6 +17,11 @@ namespace PluginLib1
         public string Terminate()
         {
             return "Plugin1 stoped";
+        }
+        public override string ToString()
+        {
+
+            return $"Plugin1";
         }
     }
 }

@@ -15,5 +15,10 @@ namespace PluginLib3
         {
             return "Plugin3 stoped";
         }
+        public override string ToString()
+        {
+
+            return $"Plugin3";
+        }
     }
 }
