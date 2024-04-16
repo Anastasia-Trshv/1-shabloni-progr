@@ -67,6 +67,8 @@ namespace lr1
             {
                 LoadedPlugins.Add(factoryProduct);
                 UnloadedPlugins.Remove(keypair.Key);
+                UnloadedPlugins.Add(keypair.Key,keypair.Value);
+                UnloadedPlugins.Remove(keypair.Key);
 
                 UpdateUnloadListBox();
                 UpdateLoadedListBox();
@@ -87,7 +89,7 @@ namespace lr1
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            IPlugin plugin=(IPlugin)WorkingPluginsListBox.SelectedItem;
+            IPlugin plugin= (IPlugin)WorkingPluginListBox.SelectedItem;
             plugin.Status = false;
             WorkingPlugins.Remove(plugin);
             LoadedPlugins.Add(plugin);
@@ -107,8 +109,11 @@ namespace lr1
                 }
             }
             UnloadedPlugins.Add(keypair,AllPlugins[keypair]);
+            
+
             UpdateUnloadListBox();
             UpdateLoadedListBox();
+
         }
 
         private void UpdateUnloadListBox()
@@ -118,7 +123,7 @@ namespace lr1
         }
         private void UpdateLoadedListBox()
         {
-           LoadedPluginListBox.ItemsSource = null;
+            LoadedPluginListBox.ItemsSource = null;
             LoadedPluginListBox.ItemsSource = LoadedPlugins;
         }
         private void UpdateWorkingListBox()
