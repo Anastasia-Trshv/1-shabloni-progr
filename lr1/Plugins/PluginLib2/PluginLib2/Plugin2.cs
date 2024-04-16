@@ -1,5 +1,4 @@
-﻿using lr1.model;
-using PlugLibInterfaces;
+﻿using PlugLibInterfaces;
 
 namespace PluginLib2
 {
